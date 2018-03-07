@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 
 import com.network.plans.MobilePlans.Bean.Plan;
 
@@ -13,7 +14,7 @@ import com.network.plans.MobilePlans.Bean.Plan;
 public class PlansConfig {
 
 	@Bean(name = "airtel")
-	@Scope(value = "prototype")
+	@Scope(value = "request", proxyMode = ScopedProxyMode.TARGET_CLASS)
 	public List<Plan> getAirtelPlans(){
 		List<Plan> plans = new ArrayList<Plan>();
 		Plan plan = new Plan("airtelDummy", 199, 30);
